@@ -102,6 +102,9 @@ parser.add_argument('--inst_name', type=str, default=None, help='name of institu
 parser.add_argument('--weighted_fl_avg', action='store_true', default=False, help='weight model weights by support during FedAvg update')
 parser.add_argument('--no_fl', action='store_true', default=False, help='train on centralized data')
 parser.add_argument('--E', type=int, default=1, help='communication_freq')
+# ----> self_add
+parser.add_argument('--testing',default=False,help = '?test',type=bool)
+parser.add_argument('--n_classes',default=2, help = '?class', type=int)
 args = parser.parse_args()
 device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -154,13 +157,14 @@ else:
 print('\nLoad Dataset')
 
 if args.task == 'classification':
-    args.n_classes=3
-    dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/classification_fl_dummy_dataset.csv',
+    # args.n_classes=3 #!!!!!!!!
+    dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/myself_tcga_fl_dataset.csv',   # 修改csv文件的位置 dataset_csv/classification_fl_dummy_dataset.csv
                             data_dir= os.path.join(args.data_root_dir, 'classification_features_dir'),
                             shuffle = False,
                             seed = args.seed,
                             print_info = True,
-                            label_dict = {'class_0':0, 'class_1':1, 'class_2':2},
+                            # label_dict = {'class_0':0, 'class_1':1, 'class_2':2},
+                            label_dict = {'class_0':0, 'class_1':1}, # 改为Bi-classification
                             label_col = 'diagnosis_label',
                             inst = args.inst_name,
                             patient_strat= False)
@@ -193,6 +197,7 @@ for key, val in settings.items():
     print("{}:  {}".format(key, val))        
 
 if __name__ == "__main__":
+    print("sdlfkjsakljf;lksjdf;lkja;lksdhjfpkla=========================="+f'{args.n_classes}')
     results = main(args)
     print("finished!")
     print("end script")
