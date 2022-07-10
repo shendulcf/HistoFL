@@ -97,14 +97,27 @@ def csv_gen_fl(path):
     }
     frame = pd.DataFrame(data)
     frame.to_csv('dataset_csv/myself_tcga_fl_dataset.csv')
+
+# site csv 划分
+def site_csv_split():
+    
+    dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset.csv"
+    result_1=pd.read_csv(dir,encoding="gbk")
+    institute_list=list(result_1.groupby(["institute"]))
+    for institute in institute_list:
+        institute_pd=pd.DataFrame(institute[1])
+        institute_pd.to_csv(r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/"+str(institute[0])+".csv")
     
     
     
 
 if __name__ == '__main__':
     path = r'/home/sci/PycharmProjects/chaofan/projects/Datasets/tcga_test'
+    path2 = '/home/sci/PycharmProjects/chaofan/projects/CLAM/data2/DATA_DIRECTORY'
     
     print(os.getcwd())
     # csv_gen_step1()
     # csv_gen_test(path)
-    csv_gen_fl(path)
+
+    # csv_gen_fl(path2)
+    site_csv_split()
