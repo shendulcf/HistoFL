@@ -101,7 +101,8 @@ def csv_gen_fl(path):
 # site csv 划分
 def site_csv_split():
     
-    dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset.csv"
+    # dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset.csv"
+    dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset_nonIId.csv"
     result_1=pd.read_csv(dir,encoding="gbk")
     institute_list=list(result_1.groupby(["institute"]))
     for institute in institute_list:
