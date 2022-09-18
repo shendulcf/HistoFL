@@ -1,4 +1,4 @@
-,case_id,slide_id,diagnosis_label,institute
+,case_id,slide_id,label,institute
 0,TCGA-AF-2689,TCGA-AF-2689-11A-01-TS1,class_0,site_0
 1,TCGA-AG-A020,TCGA-AG-A020-11A-01-TS1,class_0,site_0
 2,TCGA-AA-3517,TCGA-AA-3517-11A-01-TS1,class_0,site_0
