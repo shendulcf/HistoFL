@@ -42,12 +42,21 @@ def main(args):
     all_val_acc = []
     folds = np.arange(start, end)
     for i in folds:
+        print(f'-------------------- fold{i} start --------------------')
         seed_torch(args.seed)
         train_datasets, val_dataset, test_dataset = dataset.return_splits(from_id=False,
                 csv_path='{}/splits_{}.csv'.format(args.split_dir, i), no_fl=args.no_fl)
+        print(train_datasets)
+        print(val_dataset)
+        print(test_dataset)
         
         if len(train_datasets)>1:
             for idx in range(len(train_datasets)):
+                print(idx)
+                print(train_datasets)
+                print(train_datasets[idx])
+                print(len(train_datasets))
+                print("--------------------------------")
                 print("worker_{} training on {} samples".format(idx,len(train_datasets[idx])))
             print('validation: {}, testing: {}'.format(len(val_dataset), len(test_dataset)))
             datasets = (train_datasets, val_dataset, test_dataset)
@@ -159,7 +168,7 @@ print('\nLoad Dataset')
 
 if args.task == 'classification':
     # args.n_classes=3 #!!!!!!!!
-    dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/myself_tcga_fl_dataset_nonIId.csv',   # 修改csv文件的位置 dataset_csv/classification_fl_dummy_dataset.csv
+    dataset = Generic_MIL_Dataset(csv_path = r'dataset_csv/tcga_crc_1479_NonIID.csv',   # 修改csv文件的位置 dataset_csv/classification_fl_dummy_dataset.csv
                             data_dir= os.path.join(args.data_root_dir, 'classification_features_dir'),
                             shuffle = False,
                             seed = args.seed,

@@ -102,12 +102,12 @@ def csv_gen_fl(path):
 def site_csv_split():
     
     # dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset.csv"
-    dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/myself_tcga_fl_dataset_nonIId.csv"
+    dir=r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv_myself/tcga_crc_1479_NonIID.csv"
     result_1=pd.read_csv(dir,encoding="gbk")
     institute_list=list(result_1.groupby(["institute"]))
     for institute in institute_list:
         institute_pd=pd.DataFrame(institute[1])
-        institute_pd.to_csv(r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv/"+str(institute[0])+".csv")
+        institute_pd.to_csv(r"/home/sci/PycharmProjects/chaofan/projects/histoFL/dataset_csv_myself/"+str(institute[0])+".csv")
     
     
     

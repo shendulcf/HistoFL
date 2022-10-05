@@ -287,6 +287,18 @@ class Generic_WSI_Classification_Dataset(Dataset):
 					mask = all_splits['train'].isin(self.slide_data[self.slide_data['institute']==inst].slide_id)
 					train_split = all_splits.loc[mask, 'train']
 					train_splits.append(self.get_split_from_df(train_split))
+
+					print("--------------------------------test--------------------------------")
+					print(inst)
+					print(self.institutes)
+
+					print(self.slide_data)
+					print(self.slide_data['institute'])
+					print("mask:{}".format(mask))
+
+					print("train_splits:{}".format(train_splits))
+					print('--------------------------------test--------------------------------')
+					
 				
 			return train_splits, val_split, test_split
 
