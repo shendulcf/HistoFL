@@ -168,7 +168,7 @@ print('\nLoad Dataset')
 
 if args.task == 'classification':
     # args.n_classes=3 #!!!!!!!!
-    dataset = Generic_MIL_Dataset(csv_path = r'dataset_csv/tcga_crc_1479_NonIID.csv',   # 修改csv文件的位置 dataset_csv/classification_fl_dummy_dataset.csv
+    dataset = Generic_MIL_Dataset(csv_path = r'dataset_csv_myself/tcga_crc_1479_NonIID.csv',   # 修改csv文件的位置 dataset_csv/classification_fl_dummy_dataset.csv
                             data_dir= os.path.join(args.data_root_dir, 'classification_features_dir'),
                             shuffle = False,
                             seed = args.seed,
