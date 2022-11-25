@@ -96,7 +96,7 @@ def csv_gen_fl(path):
             "institute":institute
     }
     frame = pd.DataFrame(data)
-    frame.to_csv('dataset_csv/myself_tcga_fl_dataset.csv')
+    frame.to_csv('dataset_csv_myself/tcga_brca.csv')
 
 # site csv 划分
 def site_csv_split():
@@ -115,10 +115,10 @@ def site_csv_split():
 if __name__ == '__main__':
     path = r'/home/sci/PycharmProjects/chaofan/projects/Datasets/tcga_test'
     path2 = '/home/sci/PycharmProjects/chaofan/projects/CLAM/data2/DATA_DIRECTORY'
-    
+    path3 = '/home/sci/Disk2/tcga_brca/WSI'
     print(os.getcwd())
     # csv_gen_step1()
     # csv_gen_test(path)
 
-    # csv_gen_fl(path2)
-    site_csv_split()
+    csv_gen_fl(path3)
+    # site_csv_split()
